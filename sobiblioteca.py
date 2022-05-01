@@ -5,10 +5,12 @@ livros = []
 cod = 0
 
 while True:
+    lpesquisa = []
+    os.system('cls' if os.name == 'nt' else 'clear')
     print('\n*******************************************')
     print('*********Escolha a opção desejada!*********')
     print('*******************************************')
-    print('(1) Cadastrar livro\n(2) Consultar livros cadastrados\n(3) Alugar livro\n(4) Devolver livro\n(5) Excluir livro\n(6) Encerrar sistema')
+    print('(1) Cadastrar livro\n(2) Consultar livros cadastrados\n(3) Pesquisar livro\n(4) Alugar livro\n(5) Devolver livro\n(6) Editar livro\n(7) Excluir livro\n(8) Encerrar sistema')
     op = input('Opção: ')
 
     if op == '6':
@@ -25,10 +27,20 @@ while True:
     elif op == '2':
         os.system('cls' if os.name == 'nt' else 'clear')
         for i in range(0, len(livros)):
-            print(f'\nCódigo: {livros[i].codigo:03.0f}')
-            print(f'Título: {livros[i].titulo}')
-            print(f'Autor: {livros[i].autor}')
-            print(f'Editora: {livros[i].editora}')
-            print(f'Ano: {livros[i].ano}')
-            print(f'Disponibilidade: {livros[i].disponivel}')
-
+            livros[i].mostrarLivro()
+        c = input('')
+    elif op == '3':
+        os.system('cls' if os.name == 'nt' else 'clear')
+        pesquisa = input('Qual livro está procurando: ')
+        for i in range(0, len(livros)):
+            if pesquisa in livros[i].titulo:
+                lpesquisa.append(livros[i])
+        os.system('cls' if os.name == 'nt' else 'clear')
+        for i in range(0, len(lpesquisa)):
+            lpesquisa[i].mostrarLivro()
+        c = input('')
+    elif op == '4':
+        codigo = int(input('Informe o código do livro que deseja alugar: '))
+        for i in range(0, len(livros)):
+            if codigo == livros[i].codigo:
+                livros[i].alugarLivro()

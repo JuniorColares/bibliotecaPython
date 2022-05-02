@@ -61,7 +61,7 @@ while True:
         codigo = int(input('Informe o código do livro que deseja excluir: '))
         for i in range(0, len(livros)):
             if codigo == livros[i].codigo:
-                conf = input(f'Tem certeza que deseja excluir o livro {livros[i].titulo}? (s/n) ')
+                conf = input(f'Tem certeza que deseja excluir o livro {livros[i].titulo} de {livros[i].autor}? (s/n) ')
                 if conf == 's':
                     del(livros[i])
                     print('Livro excluído')

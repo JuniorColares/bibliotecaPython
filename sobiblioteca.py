@@ -13,7 +13,7 @@ while True:
     print('(1) Cadastrar livro\n(2) Consultar livros cadastrados\n(3) Pesquisar livro\n(4) Alugar livro\n(5) Devolver livro\n(6) Editar livro\n(7) Excluir livro\n(8) Encerrar sistema')
     op = input('Opção: ')
 
-    if op == '6':
+    if op == '8':
         break
     elif op == '1':
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -44,3 +44,30 @@ while True:
         for i in range(0, len(livros)):
             if codigo == livros[i].codigo:
                 livros[i].alugarLivro()
+    elif op == '5':
+        codigo = int(input('Informe o código do livro que deseja devolver: '))
+        for i in range(0, len(livros)):
+            if codigo == livros[i].codigo:
+                livros[i].devolverLivro()
+    elif op == '6':
+        codigo = int(input('Informe o código do livro que deseja alterar: '))
+        for i in range(0, len(livros)):
+            if codigo == livros[i].codigo:
+                livroa = livros[i]
+        alteracao = input('(t) Título / (a) Autor / (e) Editora / (an) Ano\nO que deseja alterar: ')
+        alteracaov = input('Qual o novo valor: ')
+        livroa.alterarLivro(alteracao, alteracaov)
+    elif op == '7':
+        codigo = int(input('Informe o código do livro que deseja excluir: '))
+        for i in range(0, len(livros)):
+            if codigo == livros[i].codigo:
+                conf = input(f'Tem certeza que deseja excluir o livro {livros[i].titulo}? (s/n) ')
+                if conf == 's':
+                    del(livros[i])
+                    print('Livro excluído')
+                    a = input('')
+                else:
+                    continue
+
+
+print('\nSISTEMA ENCERRADO!')

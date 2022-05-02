@@ -53,10 +53,9 @@ while True:
         codigo = int(input('Informe o código do livro que deseja alterar: '))
         for i in range(0, len(livros)):
             if codigo == livros[i].codigo:
-                livroa = livros[i]
-        alteracao = input('(t) Título / (a) Autor / (e) Editora / (an) Ano\nO que deseja alterar: ')
-        alteracaov = input('Qual o novo valor: ')
-        livroa.alterarLivro(alteracao, alteracaov)
+                alteracao = input('(t) Título / (a) Autor / (e) Editora / (an) Ano\nO que deseja alterar: ')
+                alteracaov = input('Qual o novo valor: ')
+                livros[i].alterarLivro(alteracao, alteracaov)
     elif op == '7':
         codigo = int(input('Informe o código do livro que deseja excluir: '))
         for i in range(0, len(livros)):
@@ -66,8 +65,8 @@ while True:
                     del(livros[i])
                     print('Livro excluído')
                     a = input('')
-                else:
-                    continue
+    else:
+        print('Opção inválida!')
 
 
 print('\nSISTEMA ENCERRADO!')
